@@ -1,5 +1,8 @@
 package dam.pmdm.spyrothedragon.ui;
 
+import static android.view.WindowManager.*;
+
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -28,15 +31,15 @@ public class FireAnimationDialog extends Dialog {
         setContentView(R.layout.dialog_fire_animation);
 
         // El diálogo ocupa toda la pantalla
-        WindowManager.LayoutParams params = getWindow().getAttributes();
-        params.width = WindowManager.LayoutParams.MATCH_PARENT;
-        params.height = WindowManager.LayoutParams.MATCH_PARENT;
+        LayoutParams params = getWindow().getAttributes();
+        params.width = LayoutParams.MATCH_PARENT;
+        params.height = LayoutParams.MATCH_PARENT;
         getWindow().setAttributes(params);
 
         ImageView characterImageView = findViewById(R.id.character_image);
         TextView characterNameTextView = findViewById(R.id.character_name);
 
-        int imageResId = getContext().getResources().getIdentifier(
+        @SuppressLint("DiscouragedApi") int imageResId = getContext().getResources().getIdentifier(
                 character.getImage(), "drawable", getContext().getPackageName());
         characterImageView.setImageResource(imageResId);
         characterNameTextView.setText(character.getName());

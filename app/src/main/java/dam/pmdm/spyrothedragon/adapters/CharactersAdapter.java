@@ -1,11 +1,13 @@
 package dam.pmdm.spyrothedragon.adapters;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import dam.pmdm.spyrothedragon.R;
@@ -22,6 +24,7 @@ public class CharactersAdapter extends RecyclerView.Adapter<CharactersAdapter.Ch
         this.list = charactersList;
     }
 
+    @NonNull
     @Override
     public CharactersViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview, parent, false);
@@ -34,7 +37,7 @@ public class CharactersAdapter extends RecyclerView.Adapter<CharactersAdapter.Ch
         holder.nameTextView.setText(character.getName());
 
         // Cargar la imagen
-        int imageResId = holder.itemView.getContext().getResources().getIdentifier(
+        @SuppressLint("DiscouragedApi") int imageResId = holder.itemView.getContext().getResources().getIdentifier(
                 character.getImage(), "drawable", holder.itemView.getContext().getPackageName());
         holder.imageImageView.setImageResource(imageResId);
 

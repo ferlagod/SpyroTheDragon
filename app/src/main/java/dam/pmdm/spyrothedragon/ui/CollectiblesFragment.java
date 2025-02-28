@@ -1,5 +1,6 @@
 package dam.pmdm.spyrothedragon.ui;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,6 +52,7 @@ public class CollectiblesFragment extends Fragment {
         binding = null;
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private void loadCollectibles() {
         try {
             InputStream inputStream = getResources().openRawResource(R.raw.collectibles);
@@ -63,7 +65,7 @@ public class CollectiblesFragment extends Fragment {
             Collectible currentCollectible = null;
 
             while (eventType != XmlPullParser.END_DOCUMENT) {
-                String tagName = null;
+                String tagName;
 
                 switch (eventType) {
                     case XmlPullParser.START_TAG:

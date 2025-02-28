@@ -1,5 +1,6 @@
 package dam.pmdm.spyrothedragon.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -27,6 +29,7 @@ public class CollectiblesAdapter extends RecyclerView.Adapter<CollectiblesAdapte
         this.context = context;
     }
 
+    @NonNull
     @Override
     public CollectiblesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview, parent, false);
@@ -38,7 +41,7 @@ public class CollectiblesAdapter extends RecyclerView.Adapter<CollectiblesAdapte
         Collectible collectible = list.get(position);
         holder.nameTextView.setText(collectible.getName());
 
-        int imageResId = holder.itemView.getContext().getResources().getIdentifier(collectible.getImage(), "drawable", holder.itemView.getContext().getPackageName());
+        @SuppressLint("DiscouragedApi") int imageResId = holder.itemView.getContext().getResources().getIdentifier(collectible.getImage(), "drawable", holder.itemView.getContext().getPackageName());
         holder.imageImageView.setImageResource(imageResId);
 
         // Manejo del Easter Egg (4 toques)

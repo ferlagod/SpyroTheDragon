@@ -28,4 +28,6 @@
     <string name="next">Siguiente</string>
     <string name="skip">Omitir guia.</string>
     <string name="genial">¡GENIAL!</string>
+    <string name="spyro">Spyro</string>
+    <string name="spyro_character">Spyro character</string>
 </resources>

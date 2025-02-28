@@ -56,13 +56,9 @@ public class MainActivity extends AppCompatActivity {
         mediaPlayer = new MediaPlayer();
 
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
-            if (destination.getId() == R.id.navigation_characters ||
-                    destination.getId() == R.id.navigation_worlds ||
-                    destination.getId() == R.id.navigation_collectibles) {
-                getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-            } else {
-                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            }
+            getSupportActionBar().setDisplayHomeAsUpEnabled(destination.getId() != R.id.navigation_characters &&
+                    destination.getId() != R.id.navigation_worlds &&
+                    destination.getId() != R.id.navigation_collectibles);
         });
 
     }
