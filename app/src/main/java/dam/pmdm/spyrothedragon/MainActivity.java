@@ -25,13 +25,14 @@ public class MainActivity extends AppCompatActivity {
 
     private NavController navController = null;
 
+    private ActivityMainBinding binding;
     private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        dam.pmdm.spyrothedragon.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
 
