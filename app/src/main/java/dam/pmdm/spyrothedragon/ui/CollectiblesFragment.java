@@ -34,9 +34,11 @@ public class CollectiblesFragment extends Fragment {
 
         binding = FragmentCollectiblesBinding.inflate(inflater, container, false);
         recyclerView = binding.recyclerViewCollectibles;
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         collectiblesList = new ArrayList<>();
-        adapter = new CollectiblesAdapter(collectiblesList);
+
+        adapter = new CollectiblesAdapter(collectiblesList, getContext());
         recyclerView.setAdapter(adapter);
 
         loadCollectibles();
@@ -52,8 +54,6 @@ public class CollectiblesFragment extends Fragment {
     private void loadCollectibles() {
         try {
             InputStream inputStream = getResources().openRawResource(R.raw.collectibles);
-
-            // Crear un parser XML
             XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
             factory.setNamespaceAware(true);
             XmlPullParser parser = factory.newPullParser();

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import dam.pmdm.spyrothedragon.R;
 import dam.pmdm.spyrothedragon.models.Character;
+import dam.pmdm.spyrothedragon.ui.FireAnimationDialog;
 
 import java.util.List;
 
@@ -32,9 +33,23 @@ public class CharactersAdapter extends RecyclerView.Adapter<CharactersAdapter.Ch
         Character character = list.get(position);
         holder.nameTextView.setText(character.getName());
 
-        // Cargar la imagen (simulado con un recurso drawable)
-        int imageResId = holder.itemView.getContext().getResources().getIdentifier(character.getImage(), "drawable", holder.itemView.getContext().getPackageName());
+        // Cargar la imagen
+        int imageResId = holder.itemView.getContext().getResources().getIdentifier(
+                character.getImage(), "drawable", holder.itemView.getContext().getPackageName());
         holder.imageImageView.setImageResource(imageResId);
+
+        // Listener de pulsación prolongada solo para Spyro
+        if ("Spyro".equals(character.getName())) {
+            holder.itemView.setOnLongClickListener(v -> {
+                // Animación de fuego
+                FireAnimationDialog dialog = new FireAnimationDialog(v.getContext(), character);
+                dialog.show();
+                return true;
+            });
+        } else {
+            // Eliminar el listener para otros personajes
+            holder.itemView.setOnLongClickListener(null);
+        }
     }
 
     @Override
