@@ -9,7 +9,7 @@ android {
     defaultConfig {
         applicationId = "dam.pmdm.spyrothedragon"
         minSdk = 31
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
